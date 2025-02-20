@@ -1,0 +1,113 @@
+body{
+    background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
+}
+.nav-bar{
+    display: flex;
+    background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(151,29,253,1) 50%, rgba(252,176,69,1) 100%);
+   justify-content: space-between;
+    height: 60px;
+}
+.nav-items{
+    color:white;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 20px 15px;
+    align-items: center;
+    font-weight: bold;
+
+}
+.logo{
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 20px 15px;
+    font-family: sigmar;
+
+}
+.sigmar-regular {
+    font-family: "Sigmar", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.nav-items li{
+    display: inline;
+}
+.nav-items a{
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 2px 2px 6px rgb(117, 116, 116);
+    color: #ffffff;
+    transition: 1s;
+
+
+}
+.nav-items li:hover{
+    transform: scale(1.2);
+}
+
+
+
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: auto;
+    margin-top: 15%;
+}
+
+.big-button {
+    padding: 20px 40px;
+    font-size: 24px;
+    
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    width: 350px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(151,29,253,1) 50%, rgba(252,176,69,1) 100%);
+box-shadow: 2px 2px 8px black
+
+    
+}
+
+
+
+
+.big-button:hover {
+    background-color: #45a049;
+    
+}
+
+.big-search {
+    padding: 20px;
+    font-size: 24px;
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    
+    border-radius: 50px;
+    box-shadow: 2px 2px 8px black;
+}
+#sumbit{
+    margin-top: 15px;
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 120px;
+}
+

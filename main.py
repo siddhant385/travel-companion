@@ -3,15 +3,20 @@ from mods.news import get_news
 from mods.weather import get_weather_weatherapi
 from mods.aireview import rate_location
 from mods.geocode import get_city
+import openai
 app = Flask(__name__)
 
 
+client = openai.OpenAI(
+    api_key="your_groq_api_key", 
+    base_url="http://0.0.0.0:1337/v1"
+)
 last_location = {"latitude": None, "longitude": None}
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('travel.html')
 
 @app.route('/location', methods=['POST'])
 def get_location():
@@ -40,10 +45,52 @@ def get_relevant_info():
     "city": city,
     "traffic": news,
     "weather": weather,
-    "rate": rate
+    "rate": rate,
+    "police_station":f"https://www.google.com/maps/search/police+station/@${last_location['latitude']},${last_location['latitude']},15z",
+    "hospital":f"https://www.google.com/maps/search/hospital/@${last_location['latitude']},${last_location['latitude']},15z"
 }
 
     return jsonify(info)
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.json
+    user_message = data.get("message")
+
+    if not user_message:
+        return jsonify({"response": "Please provide a message."})
+
+    # Call OpenAI API
+    user_message = "You are an AI assistant specializing in travel safety. Provide concise and accurate safety advice based on the user's location, recent news, crime statistics, and general travel precautions. If location-specific data is unavailable, offer general travel safety tips. Ensure the response is practical and easy to understand. And if user asks for query other than travel or entirely different from it then politely reply that you can only provide travel related information"
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": user_message}]
+    )
+
+    
+
+    bot_response = response.choices[0].message.content
+    return jsonify({"response": bot_response})
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
+
+
+@app.route('/terms')
+def func_name(foo):
+    return render_template('')
+
+
+
+
+
+
 
 
 if __name__ == '__main__':

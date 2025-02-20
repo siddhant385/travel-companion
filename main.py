@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 client = openai.OpenAI(
     api_key="your_groq_api_key", 
-    base_url="http://0.0.0.0:1337/v1"
+    base_url="http://127.0.0.1:1337/v1"
 )
 last_location = {"latitude": None, "longitude": None}
 
@@ -61,11 +61,12 @@ def chat():
         return jsonify({"response": "Please provide a message."})
 
     # Call OpenAI API
-    user_message = "You are an AI assistant specializing in travel safety. Provide concise and accurate safety advice based on the user's location, recent news, crime statistics, and general travel precautions. If location-specific data is unavailable, offer general travel safety tips. Ensure the response is practical and easy to understand. And if user asks for query other than travel or entirely different from it then politely reply that you can only provide travel related information"
+    prompt = f"You are an AI assistant specializing in travel safety and travel locations. Provide concise and accurate safety advice based on the user's location, recent news, crime statistics, and general travel precautions. If location-specific data is unavailable, offer general travel safety tips. Ensure the response is practical and easy to understand with some humor in it also provide funny emojis for user interaction. And if user asks for query other than travel or entirely different from it then politely reply that you can only provide travel related information and the query of user is{user_message}"
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[{"role": "user", "content": user_message}]
+        messages=[{"role": "user", "content": prompt}]
     )
+    print(response)
 
     
 

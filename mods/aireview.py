@@ -7,7 +7,7 @@ import openai
 
 client = openai.OpenAI(
     api_key="your_groq_api_key", 
-    base_url="http://0.0.0.0:1337/v1"
+    base_url="http://localhost:1337/v1"
 )
 
 

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <!-- navigation bar -->
@@ -18,7 +19,7 @@
                 <li><a href="/chatbot">Chatbot</a></li>
                 <li><a href="#destination"></a>about</li>
                 <li><a href="about"></a>location</li>
-                <li><a href="/contact"></a>contact</li>
+                <li><a href="/contact">contact</a></li>
             </ul>
         
     </nav>
@@ -74,6 +75,7 @@
             <p>&copy; 2025 RakshAI. All right reserved</p>
             <p>travel safely | made with &hearts;</p>
         </footer>
-        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        
+        <script src="{{ url_for('static', filename='script.js') }} defer"></script>
         </body>
 </html>

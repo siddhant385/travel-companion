@@ -1,3 +1,6 @@
+
+console.log(marked)
+
 function closeChat() {
   document.querySelector('.chat-box').style.display = 'none';
 }
@@ -7,7 +10,9 @@ function sendMessage() {
   if (userInput.trim()) {
       const userMessage = document.createElement('div');
       userMessage.classList.add('message', 'user-message');
-      userMessage.innerHTML = `<p>${userInput}</p>`;
+      
+      // Convert user input (Markdown) to HTML using marked.js
+      userMessage.innerHTML = `<p>${marked.parse(userInput)}</p>`;
       document.getElementById('chat-content').appendChild(userMessage);
 
       // Send message to Flask API
@@ -22,7 +27,9 @@ function sendMessage() {
       .then(data => {
           const botMessage = document.createElement('div');
           botMessage.classList.add('message', 'bot-message');
-          botMessage.innerHTML = `<p>${data.response}</p>`;
+          
+          // Convert bot's response (Markdown) to HTML using marked.js
+          botMessage.innerHTML = `<p>${marked.parse(data.response)}</p>`;
           document.getElementById('chat-content').appendChild(botMessage);
 
           // Scroll to the bottom
@@ -36,3 +43,4 @@ function sendMessage() {
       document.getElementById('user-input').value = '';
   }
 }
+

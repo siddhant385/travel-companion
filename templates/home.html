@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
 <body>
     <!-- navigation bar -->
@@ -24,13 +24,13 @@
 
     
         <div class="container">
-            <button onclick="sendLocation()" type="button" class="big-button" placeholder="Search location">Click Me To Get Location</button>
+            <button onclick="fetchLocation()" type="button" class="big-button" placeholder="Search location">Click Me To Get Location</button>
             
             <input type="text" class="big-search" placeholder="Search Location...">
             <button id="sumbit">Sumbit</button>
         </div>
     
         
-    
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
 </body>
 </html>

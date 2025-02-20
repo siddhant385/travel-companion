@@ -72,6 +72,44 @@ def get_relevant_info():
         hospital=f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z"
     )
 
+@app.route('/search', methods=['POST'])
+def search():
+    city = request.form.get("city")
+    print(city)
+    news = get_news(city)
+    weather = get_weather_weatherapi(city)
+    source = weather['source']
+    temperature = weather['temperature']
+    description = weather['description']
+    humidity = weather['humidity']
+    wind_speed = weather['wind_speed']
+    rate = rate_location(city,weather)
+    print(type(get_news(city)))
+    print(get_weather_weatherapi(city))
+    # Generate some relevant information based on location (example)
+#     info = {
+#     "city": city,
+#     "traffic": news,
+#     "weather": weather,
+#     "rate": rate,
+#     "police_station":f"https://www.google.com/maps/search/police+station/@{last_location['latitude']},{last_location['longitude']},15z",
+#     "hospital":f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z"
+# }
+
+    return render_template(
+        'travel.html',
+
+        city=city,
+        source = source,
+        temperature=temperature,
+        description=description,
+        humidity=humidity,
+        wind_speed=wind_speed,
+        news=news,
+        # rate=rate,
+        police_station=f"https://www.google.com/maps/search/police+stationin{city}",
+        hospital=f"https://www.google.com/maps/search/hospitalin{city}"
+    )
 
 @app.route("/chat", methods=["POST"])
 def chat():

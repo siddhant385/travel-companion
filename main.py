@@ -16,7 +16,7 @@ last_location = {"latitude": None, "longitude": None}
 
 @app.route('/')
 def index():
-    return render_template('travel.html')
+    return render_template('home.html')
 
 @app.route('/location', methods=['POST'])
 def get_location():
@@ -29,14 +29,21 @@ def get_location():
 
     return jsonify({"message": "Location received", "latitude": last_location['latitude'], "longitude": last_location['longitude']})
 
-@app.route('/get-info', methods=['GET'])
+@app.route('/get_info', methods=['GET'])
 def get_relevant_info():
     if last_location["latitude"] is None or last_location["longitude"] is None:
         return jsonify({"message": "No location data available yet."})
     
-    city = get_city(last_location['latitude'],last_location['longitude'])
+    
+    city = get_city(longitude=last_location['longitude'],latitude=last_location['latitude'])
+    print(city)
     news = get_news(city)
     weather = get_weather_weatherapi(city)
+    source = weather['source']
+    temperature = weather['temperature']
+    description = weather['description']
+    humidity = weather['humidity']
+    wind_speed = weather['wind_speed']
     rate = rate_location(city,weather)
     print(type(get_news(city)))
     print(get_weather_weatherapi(city))
@@ -46,11 +53,25 @@ def get_relevant_info():
     "traffic": news,
     "weather": weather,
     "rate": rate,
-    "police_station":f"https://www.google.com/maps/search/police+station/@${last_location['latitude']},${last_location['latitude']},15z",
-    "hospital":f"https://www.google.com/maps/search/hospital/@${last_location['latitude']},${last_location['latitude']},15z"
+    "police_station":f"https://www.google.com/maps/search/police+station/@{last_location['latitude']},{last_location['longitude']},15z",
+    "hospital":f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z"
 }
 
-    return jsonify(info)
+    return render_template(
+        'travel.html',
+
+        city=city,
+        source = source,
+        temperature=temperature,
+        description=description,
+        humidity=humidity,
+        wind_speed=wind_speed,
+        news=news,
+        # rate=rate,
+        police_station=f"https://www.google.com/maps/search/police+station/@{last_location['latitude']},{last_location['longitude']},15z",
+        hospital=f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z"
+    )
+
 
 @app.route("/chat", methods=["POST"])
 def chat():

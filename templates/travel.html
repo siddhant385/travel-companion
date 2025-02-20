@@ -27,10 +27,7 @@
      <section class="home" id="home">
         <h1 style="background:linear-gradient(135deg, #007BFF, #00C853); font-size: 70px;">RakshAI</h1>
         <p>Travel far enough to meet yourself,but never so far so that you forget to stay safe</p></br>
-        <div class="search-container">
-            <span class="search-icon"></span>
-            <button onclick="sendLocation()" type="button" class="search-box" placeholder="Search location">Click Me To Get Location</button>
-        </div>
+       
         
      </section>
 
@@ -38,23 +35,24 @@
      <div class="weather">
         <h2>Weather</h2>
         <ul class="weather-items">
-            <li id="source"></li>
-            <li id="temperature"></li>
-            <li id="description"></li>
-            <li id="humidity"></li>
-            <li id="wind-speed"></li>
+            <li id="source">Source : {{source}}</li>
+            <li id="temperature">Temperature : {{temperature}} °C</li>
+            <li id="description">Description : {{description}}</li>
+            <li id="humidity">Humidity : {{humidity}} %</li>
+            <li id="wind-speed">Wind Speed : {{wind_speed}} Km/h</li>
         </ul>
     </div>
 
         <section class="features" id="features">
             <h2>NEWS</h2>
             <div class="f-cards" >
+                {% for item in news %}
                 <div class="f-card" id="news-article0">
+                    <h1>{{ item["title"] }}</h1>
+                    <p>{{ item["description"] }}</p>
+                    <a href="{{ item['url'] }}" target="_blank">Read More</a>
                 </div>
-                <div class="f-card" id="news-article1">
-                </div>
-                <div class="f-card" id="news-article2">
-                </div>
+                {% endfor %}
             </div>
           </section>
         </br>
@@ -62,12 +60,12 @@
       <!-- Most Visited Places -->
       <p style="font-size:30px"><b>Important Places Nearby</b></p>
       <div id="police">
-        
+        <a href="{{police_station}}" target="_blank">Click to get nearest Police Stations</a>
       </div>
       </br></br>
       
       <div id="hospital">
-        
+        <a href="{{hospital}}" target="_blank">Click to get nearest Hospitals</a>
       </div>
       </br></br>
           <!-- footer -->
@@ -76,6 +74,6 @@
             <p>travel safely | made with &hearts;</p>
         </footer>
         
-        <script src="{{ url_for('static', filename='script.js') }} defer"></script>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
         </body>
 </html>

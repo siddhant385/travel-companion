@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>travel companion</title>
+    <title>Get Location</title>
 </head>
 <body>
-    <h1>Travel Companion</h1>
-    
+    <h2>Click the button to share your location</h2>
+    <button onclick="sendLocation()">Get Location</button>
+    <p id="status"></p>
+    <h3>Relevant Information:</h3>
+    <p id="info"></p>
+
+    <!-- Link to external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

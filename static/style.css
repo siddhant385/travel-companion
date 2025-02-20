@@ -172,7 +172,7 @@ body{
 
 .card {
     background: #fff;
-    width: 300px;
+    width: 500px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -202,24 +202,6 @@ body{
     color: #666;
     line-height: 1.5;
 }
-
-.card-footer {
-    background: #f9f9f9;
-    padding: 10px;
-    text-align: center;
-}
-
-.read-more {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.read-more:hover {
-    color: #0056b3;
-}
-
 .f-card:hover{
     box-shadow:0 4px 12px black ;
     transform:translateY(-10px);

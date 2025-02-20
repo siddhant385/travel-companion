@@ -71,12 +71,10 @@
  <!-- summary card -->
       <div class="card">
         <div class="card-content">
-            <h3 class="card-title">Summary</h3>
-            <p class="card-summary">This is a summary text of the card. It can be dynamically generated via an API.</p>
+            <h3 class="card-title">Summary By RakshAI</h3>
+            <div class="card-summary" id="summary-content">{{ rate | safe }}</div>
         </div>
-        <div class="card-footer">
-            <a href="#" class="read-more">Read More</a>
-        </div>
+        
     </div>
     
           <!-- footer -->
@@ -84,7 +82,17 @@
             <p>&copy; 2025 RakshAI. All right reserved</p>
             <p>travel safely | made with &hearts;</p>
         </footer>
-        
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const summaryContent = document.getElementById("summary-content");
+
+                if (summaryContent) {
+                    summaryContent.innerHTML = marked.parse(summaryContent.innerHTML);
+                }
+            });
+
+        </script>
         </body>
 </html>

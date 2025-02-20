@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
 <body>
+    <div id="main-content">
     <!-- navigation bar -->
     <nav class="nav-bar">
         <div class="logo">RakshAI</div>
@@ -24,13 +25,19 @@
 
     
         <div class="container">
-            <button onclick="fetchLocation()" type="button" class="big-button" placeholder="Search location">Click Me To Get Location</button>
+            <button id="get-location-btn"  onclick="fetchLocation()" type="button" class="big-button" placeholder="Search location">Click Me To Get Location</button>
             <form action="/search" method="POST">
                 <input type="text" name="city" class="big-search" placeholder="Search Location..." required>
                 <button type="submit">Submit</button>
             </form>
         
         </div>
+    </div>
+        <div id="loading-spinner" class="hidden">
+            <div class="spinner"></div>
+            <p>Processing your location...</p>
+        </div>
+    
         
     
     

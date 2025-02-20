@@ -69,7 +69,8 @@ def get_relevant_info():
         news=news,
         # rate=rate,
         police_station=f"https://www.google.com/maps/search/police+station/@{last_location['latitude']},{last_location['longitude']},15z",
-        hospital=f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z"
+        hospital=f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z",
+        rate = rate_location(news=news,weather=weather)
     )
 
 @app.route('/search', methods=['POST'])
@@ -108,7 +109,8 @@ def search():
         news=news,
         # rate=rate,
         police_station=f"https://www.google.com/maps/search/police+stationin{city}",
-        hospital=f"https://www.google.com/maps/search/hospitalin{city}"
+        hospital=f"https://www.google.com/maps/search/hospitalin{city}",
+        rate = rate_location(news=news,weather=weather)
     )
 
 @app.route("/chat", methods=["POST"])

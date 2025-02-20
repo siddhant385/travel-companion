@@ -167,6 +167,59 @@ body{
     transition: 1s;
     color: black;
 }
+
+
+
+.card {
+    background: #fff;
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 550px;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-summary {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.card-footer {
+    background: #f9f9f9;
+    padding: 10px;
+    text-align: center;
+}
+
+.read-more {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #0056b3;
+}
+
 .f-card:hover{
     box-shadow:0 4px 12px black ;
     transform:translateY(-10px);
@@ -180,3 +233,4 @@ body{
 }
 
     
+

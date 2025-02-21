@@ -85,8 +85,8 @@ def search():
     humidity = weather['humidity']
     wind_speed = weather['wind_speed']
     rate = rate_location(city,weather)
-    print(type(get_news(city)))
-    print(get_weather_weatherapi(city))
+    print(get_news(city))
+    # print(get_weather_weatherapi(city))
     # Generate some relevant information based on location (example)
 #     info = {
 #     "city": city,
@@ -107,7 +107,6 @@ def search():
         humidity=humidity,
         wind_speed=wind_speed,
         news=news,
-        # rate=rate,
         police_station=f"https://www.google.com/maps/search/police+stationin{city}",
         hospital=f"https://www.google.com/maps/search/hospitalin{city}",
         rate = rate_location(news=news,weather=weather)

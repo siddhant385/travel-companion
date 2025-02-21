@@ -47,11 +47,13 @@
             <div class="f-cards" >
                 {% for item in news %}
                 <div class="f-card" id="news-article0">
-                    <h1>{{ item["title"] }}</h1>
-                    <p>{{ item["description"] }}</p>
+                    <h1>{{ item["title"] | default('No Traffic News Found') }}</h1>
+                    <p>{{ item["description"] | default('User No news for your area today') }}</p>
                     <a href="{{ item['url'] }}" target="_blank">Read More</a>
                 </div>
                 {% endfor %}
+
+
             </div>
           </section>
         </br>

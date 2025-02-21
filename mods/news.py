@@ -16,7 +16,7 @@ def get_news(location):
             return {"error": "No news found for this location"}
 
         # Define keywords to filter traffic-related news
-        traffic_keywords = ["traffic", "road", "highway", "accident", "congestion", "construction", "jam", "blockage"]
+        traffic_keywords = ["traffic", "road", "highway", "accident", "congestion", "construction", "jam", "blockage","crime"]
 
         # Filter only traffic-related news
         traffic_news = []

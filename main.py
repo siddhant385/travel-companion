@@ -2,7 +2,7 @@ from flask import Flask, render_template,jsonify,request
 from mods.news import get_news
 from mods.weather import get_weather_weatherapi
 from mods.aireview import rate_location
-from mods.geocode import get_city
+from mods.geocode import get_city #gets city name
 import openai
 app = Flask(__name__)
 

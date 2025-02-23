@@ -2,7 +2,7 @@ from flask import Flask, render_template,jsonify,request
 from mods.news import get_news
 from mods.weather import get_weather_weatherapi
 from mods.aireview import rate_location
-from mods.geocode import get_city #gets city name
+from mods.geocode import get_city
 import openai
 app = Flask(__name__)
 
@@ -69,8 +69,7 @@ def get_relevant_info():
         news=news,
         # rate=rate,
         police_station=f"https://www.google.com/maps/search/police+station/@{last_location['latitude']},{last_location['longitude']},15z",
-        hospital=f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z",
-        rate = rate_location(news=news,weather=weather)
+        hospital=f"https://www.google.com/maps/search/hospital/@{last_location['latitude']},{last_location['longitude']},15z"
     )
 
 @app.route('/search', methods=['POST'])
@@ -85,8 +84,8 @@ def search():
     humidity = weather['humidity']
     wind_speed = weather['wind_speed']
     rate = rate_location(city,weather)
-    print(get_news(city))
-    # print(get_weather_weatherapi(city))
+    print(type(get_news(city)))
+    print(get_weather_weatherapi(city))
     # Generate some relevant information based on location (example)
 #     info = {
 #     "city": city,
@@ -107,9 +106,9 @@ def search():
         humidity=humidity,
         wind_speed=wind_speed,
         news=news,
+        # rate=rate,
         police_station=f"https://www.google.com/maps/search/police+stationin{city}",
-        hospital=f"https://www.google.com/maps/search/hospitalin{city}",
-        rate = rate_location(news=news,weather=weather)
+        hospital=f"https://www.google.com/maps/search/hospitalin{city}"
     )
 
 @app.route("/chat", methods=["POST"])

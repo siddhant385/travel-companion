@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
 <body>
-    <div id="main-content">
     <!-- navigation bar -->
     <nav class="nav-bar">
         <div class="logo">RakshAI</div>
             <ul class="nav-items">
-                <li><a href="/">Home</a></li>
-                <li><a href="/chatbot">Chatbot</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#chatbot">Chatbot</a></li>
+                <li><a href="#destination">About</a></li>
+                <li><a href="about">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         
     </nav>
@@ -24,19 +24,13 @@
 
     
         <div class="container">
-            <button id="get-location-btn"  onclick="fetchLocation()" type="button" class="big-button" placeholder="Search location">Click Me To Get Location</button>
+            <button onclick="fetchLocation()" type="button" class="big-button" placeholder="Search location">Click Me To Get Location</button>
             <form action="/search" method="POST">
                 <input type="text" name="city" class="big-search" placeholder="Search Location..." required>
-                <button class="btn" type="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         
         </div>
-    </div>
-        <div id="loading-spinner" class="hidden">
-            <div class="spinner"></div>
-            <p>Processing your location...</p>
-        </div>
-    
         
     
     
